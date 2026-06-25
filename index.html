@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Afeez Irekeola — Senior Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --bg2: #161b22;
+      --bg3: #21262d;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --accent3: #d2a8ff;
+      --tag-bg: #1f3a5f;
+      --tag-text: #79c0ff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #a5c8ff; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    main { padding-top: 60px; }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 2rem;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: calc(100vh - 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 0;
+    }
+
+    .hero-greeting {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-size: 14px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+    .btn-primary:hover { background: #a5c8ff; color: #0d1117; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-links {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .hero-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .hero-links a:hover { color: var(--accent); }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p + p { margin-top: 1rem; }
+    .about-text p { color: var(--muted); line-height: 1.8; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+    }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-group {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem;
+    }
+
+    .skill-group-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tag.green { background: #1a3a28; color: #56d364; }
+    .tag.purple { background: #2d1f4f; color: #d2a8ff; }
+    .tag.orange { background: #3a2110; color: #ffa657; }
+
+    /* ── EXPERIENCE ── */
+    .timeline { position: relative; }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 3rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item:last-child::before { display: none; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-dot.consulting { background: var(--accent3); }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .job-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .job-period {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+
+    .job-company {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    .job-context {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .job-bullets {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .job-bullets li {
+      position: relative;
+      padding-left: 1.2rem;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.7;
+      margin-bottom: 0.35rem;
+    }
+
+    .job-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 11px;
+      top: 3px;
+    }
+
+    .job-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tech-tag {
+      background: var(--bg3);
+      color: var(--muted);
+      font-size: 11px;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid var(--border);
+    }
+
+    .section-divider {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 1rem 0 2rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .project-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── CERTIFICATIONS ── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .cert-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .cert-name {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .cert-issuer {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+    }
+
+    #contact h2 { margin-bottom: 0.75rem; }
+
+    .contact-sub {
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      font-size: 15px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1.3rem;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── AVAILABILITY BADGE ── */
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1a3a28;
+      border: 1px solid #2d6a41;
+      border-radius: 20px;
+      padding: 0.35rem 0.9rem;
+      font-size: 12px;
+      color: #56d364;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .availability-dot {
+      width: 7px;
+      height: 7px;
+      background: #3fb950;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1.2rem; }
+      section { padding: 60px 1.2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .hero-name { font-size: 2.2rem; }
+      .job-header { flex-direction: column; }
+    }
+
+    @media (max-width: 500px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">afeez.io</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="availability">
+        <span class="availability-dot"></span>
+        Open to new opportunities
+      </div>
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-name">Afeez Irekeola</h1>
+      <p class="hero-title">Senior Software Engineer</p>
+      <p class="hero-desc">
+        9+ years building scalable backend systems, distributed services, and enterprise applications
+        across airline, healthcare, education, and ecommerce sectors. Based in Oakville, ON, Canada.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="#experience" class="btn btn-outline">View experience</a>
+      </div>
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/afeez-irekeola" target="_blank" rel="noopener">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://www.github.com/hayfeez" target="_blank" rel="noopener">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="mailto:afeezirekeola@gmail.com">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+          Email
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <p class="section-label">// about me</p>
+      <h2>Who I Am</h2>
+      <div class="about-grid fade-in">
+        <div class="about-text">
+          <p>
+            I'm a Senior Software Engineer with over 9 years of experience delivering high-impact backend systems
+            across diverse industries. My core strength is in designing and building scalable, reliable distributed
+            systems — from microservices and event-driven architectures to cloud-native APIs.
+          </p>
+          <p>
+            I've contributed to products used by major global carriers, tens of thousands of healthcare patients,
+            and hundreds of thousands of students. I care about clean engineering, good abstractions, and systems
+            that hold up under real-world pressure.
+          </p>
+          <p>
+            Outside of work, I enjoy exploring new technologies, contributing to architectural discussions,
+            and mentoring fellow engineers.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-num">9+</div>
+            <div class="stat-label">Years of experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Industries served</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">$2M+</div>
+            <div class="stat-label">USD processed via systems I built</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">500K+</div>
+            <div class="stat-label">Records migrated to cloud</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <p class="section-label">// technical skills</p>
+      <h2>What I Work With</h2>
+      <div class="skills-grid fade-in">
+        <div class="skill-group">
+          <div class="skill-group-title">Languages & Frameworks</div>
+          <div class="tags">
+            <span class="tag">C#</span>
+            <span class="tag">.NET</span>
+            <span class="tag">.NET Core</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">ReactJS</span>
+            <span class="tag">VB.NET</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Architecture & Backend</div>
+          <div class="tags">
+            <span class="tag purple">Microservices</span>
+            <span class="tag purple">Event-Driven</span>
+            <span class="tag purple">CQRS</span>
+            <span class="tag purple">REST APIs</span>
+            <span class="tag purple">Distributed Systems</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Databases</div>
+          <div class="tags">
+            <span class="tag green">MySQL</span>
+            <span class="tag green">SQL Server</span>
+            <span class="tag green">MongoDB</span>
+            <span class="tag green">Redis</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Cloud & DevOps</div>
+          <div class="tags">
+            <span class="tag orange">Azure</span>
+            <span class="tag orange">AWS</span>
+            <span class="tag orange">Docker</span>
+            <span class="tag orange">GitHub Actions</span>
+            <span class="tag orange">Azure DevOps</span>
+            <span class="tag orange">ArgoCD</span>
+            <span class="tag orange">TeamCity</span>
+            <span class="tag orange">Octopus</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Messaging</div>
+          <div class="tags">
+            <span class="tag">RabbitMQ</span>
+            <span class="tag">Azure Service Bus</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Testing & Quality</div>
+          <div class="tags">
+            <span class="tag">xUnit</span>
+            <span class="tag">SpecFlow</span>
+            <span class="tag">SonarQube</span>
+            <span class="tag">Kibana</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <p class="section-label">// work history</p>
+      <h2>Experience</h2>
+
+      <div class="timeline">
+
+        <!-- Job 1 -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="job-header">
+            <span class="job-title">Software Engineer</span>
+            <span class="job-period">May 2024 – Jun 2026</span>
+          </div>
+          <div class="job-company">Airline Software Company · Toronto, ON, Canada</div>
+          <p class="job-context">Building disruption management and passenger experience software used by major global carriers.</p>
+          <ul class="job-bullets">
+            <li>Developed scalable airline disruption-management and passenger-experience platforms.</li>
+            <li>Designed and built a compensation engine processing $2M+ USD in meal vouchers for 200,000+ passengers.</li>
+            <li>Implemented loyalty compensation workflows and integrated with third-party loyalty APIs.</li>
+            <li>Designed backend services using .NET, RabbitMQ, and event-driven patterns to improve throughput and reliability.</li>
+            <li>Led migration of core services from MongoDB to MySQL, improving query performance and data integrity.</li>
+            <li>Built internal productivity tools and React/TypeScript UI components to accelerate engineering workflows.</li>
+            <li>Refactored legacy modules to reduce technical debt and enhance system performance.</li>
+            <li>Mentored engineers and contributed to engineering standards and best practices.</li>
+          </ul>
+          <div class="job-tech">
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">.NET Core</span>
+            <span class="tech-tag">RabbitMQ</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">xUnit</span>
+          </div>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="job-header">
+            <span class="job-title">Senior Engineer</span>
+            <span class="job-period">Apr 2020 – Mar 2024</span>
+          </div>
+          <div class="job-company">Axxess Technologies · Dallas, TX, USA</div>
+          <p class="job-context">Leading healthcare technology company offering a suite of SaaS products for care-at-home organizations across the United States.</p>
+          <ul class="job-bullets">
+            <li>Led architectural decisions and integration strategies for backend services across multiple product suites.</li>
+            <li>Migrated 10+ live healthcare agencies to a modern SaaS platform with zero data loss and full workflow continuity.</li>
+            <li>Built backend services powering compliance, scheduling, clinical documentation, and operational workflows.</li>
+            <li>Integrated with external healthcare APIs and internal microservices to improve interoperability.</li>
+            <li>Improved CI/CD pipelines and deployment processes, increasing release stability and reducing deployment time.</li>
+            <li>Mentored new hires and contributed to onboarding, coding standards, and team knowledge sharing.</li>
+          </ul>
+          <div class="job-tech">
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">SQL Server</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">LINQ</span>
+            <span class="tech-tag">CQRS</span>
+            <span class="tech-tag">TeamCity</span>
+            <span class="tech-tag">Octopus</span>
+            <span class="tech-tag">Kibana</span>
+          </div>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="job-header">
+            <span class="job-title">Software Developer</span>
+            <span class="job-period">Oct 2017 – Mar 2020</span>
+          </div>
+          <div class="job-company">Sidmach Technologies · Lagos, Nigeria</div>
+          <p class="job-context">Custom enterprise software company serving clients primarily in the education and public sector.</p>
+          <ul class="job-bullets">
+            <li>Developed enterprise applications for education and public-sector clients.</li>
+            <li>Built and maintained APIs enabling integrations across multiple systems.</li>
+            <li>Participated in requirements analysis, feature development, testing, and deployment.</li>
+            <li>Supported QA and UAT processes, improving delivery quality and reducing defects.</li>
+          </ul>
+          <div class="job-tech">
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">VB.NET</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Azure DevOps</span>
+            <span class="tech-tag">Serverless</span>
+          </div>
+        </div>
+
+        <div class="section-divider">Consulting Engagements</div>
+
+        <!-- Consulting 1 -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot consulting"></div>
+          <div class="job-header">
+            <span class="job-title">Software Consultant</span>
+            <span class="job-period">May 2021 – Dec 2022</span>
+          </div>
+          <div class="job-company">SovTech · South Africa</div>
+          <p class="job-context">Contracted to help migrate a major UK fast-food chain's on-premise e-commerce platform to microservice architecture.</p>
+          <ul class="job-bullets">
+            <li>Built cloud-native customer microservices using .NET Core and CommerceTools.</li>
+            <li>Supported migration of 500K+ customer records from on-premise systems to cloud microservices.</li>
+            <li>Improved backend performance and reliability through scalable service design and API optimization.</li>
+            <li>Collaborated with distributed teams delivering enterprise ecommerce solutions.</li>
+          </ul>
+          <div class="job-tech">
+            <span class="tech-tag">.NET Core</span>
+            <span class="tech-tag">CommerceTools</span>
+            <span class="tech-tag">Microservices</span>
+          </div>
+        </div>
+
+        <!-- Consulting 2 -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot consulting"></div>
+          <div class="job-header">
+            <span class="job-title">Software Consultant</span>
+            <span class="job-period">Apr 2021 – Jan 2022</span>
+          </div>
+          <div class="job-company">Brightstar Technologies · Lagos, Nigeria</div>
+          <p class="job-context">Architected and built backend microservices for two accounting solutions targeting SMEs.</p>
+          <ul class="job-bullets">
+            <li>Designed and developed backend services for Inventory, Invoices, Transactions, and Vendor management modules.</li>
+            <li>Built full User/Role Management and Accounting modules from scratch.</li>
+            <li>Handled architecture, backend development, and deployment for both products.</li>
+          </ul>
+          <div class="job-tech">
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">.NET Core</span>
+            <span class="tech-tag">Microservices</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <p class="section-label">// notable work</p>
+      <h2>Projects & Systems</h2>
+      <div class="projects-grid fade-in">
+
+        <div class="project-card">
+          <div class="project-icon">✈️</div>
+          <div class="project-name">Airline Disruption Management Platform</div>
+          <div class="project-desc">Scalable platform for managing flight disruptions and passenger experience for major global carriers. Includes a compensation engine that processed $2M+ USD in meal vouchers for 200K+ passengers.</div>
+          <div class="tags"><span class="tag">.NET Core</span><span class="tag">RabbitMQ</span><span class="tag">MySQL</span><span class="tag">React</span></div>
+          <div class="project-meta">Professional · Airline Industry</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">🏥</div>
+          <div class="project-name">Healthcare EMR Platform</div>
+          <div class="project-desc">Backend services for a multi-agency SaaS EMR platform serving hospice and palliative care organizations across the US. Migrated 10+ live agencies with zero data loss.</div>
+          <div class="tags"><span class="tag">.NET Core</span><span class="tag">SQL Server</span><span class="tag">Redis</span><span class="tag">CQRS</span></div>
+          <div class="project-meta">Professional · Healthcare</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">🛒</div>
+          <div class="project-name">E-commerce Microservices Migration</div>
+          <div class="project-desc">Cloud-native customer microservice built as part of a major UK fast-food chain's migration from monolith to microservices. Migrated 500K+ customer records to cloud infrastructure.</div>
+          <div class="tags"><span class="tag">.NET Core</span><span class="tag">CommerceTools</span><span class="tag">Microservices</span></div>
+          <div class="project-meta">Professional · E-commerce</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">📚</div>
+          <div class="project-name">Bookkeeping Application for SMEs</div>
+          <div class="project-desc">Full-featured accounting solution for small and medium businesses in Nigeria. Covered invoicing, inventory, transactions, vendor management, and full accounting modules.</div>
+          <div class="tags"><span class="tag">.NET Core</span><span class="tag">Microservices</span></div>
+          <div class="project-meta">Consulting · Fintech</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">🏢</div>
+          <div class="project-name">Visitor Management System</div>
+          <div class="project-desc">Enterprise-grade system for managing visitors and guests at corporate workspaces — covering check-in/check-out flows, host notifications, and visitor logs.</div>
+          <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span></div>
+          <div class="project-meta">Professional</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">🎓</div>
+          <div class="project-name">Student Portal & Result Verification</div>
+          <div class="project-desc">University student portal covering academic records and course management, plus a separate result verification system for a national examination body in Nigeria.</div>
+          <div class="tags"><span class="tag">C#</span><span class="tag">SQL</span><span class="tag">JavaScript</span></div>
+          <div class="project-meta">Professional · Education</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <p class="section-label">// credentials</p>
+      <h2>Certifications & Education</h2>
+      <div class="certs-grid fade-in">
+        <div class="cert-item">
+          <div class="cert-icon">☁️</div>
+          <div>
+            <div class="cert-name">AWS Cloud Practitioner</div>
+            <div class="cert-issuer">Amazon Web Services · 2022</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🎓</div>
+          <div>
+            <div class="cert-name">Diploma in Information Technology</div>
+            <div class="cert-issuer">British Computer Society (BCS) · 2022</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">⚙️</div>
+          <div>
+            <div class="cert-name">ITIL v4 Foundation — IT Service Management</div>
+            <div class="cert-issuer">PeopleCert / AXELOS · 2019</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🔐</div>
+          <div>
+            <div class="cert-name">Certified Secure Computer User</div>
+            <div class="cert-issuer">EC-Council · 2018</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🏅</div>
+          <div>
+            <div class="cert-name">Microsoft Certified Solutions Associate (Office 365)</div>
+            <div class="cert-issuer">Microsoft · 2017</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🏅</div>
+          <div>
+            <div class="cert-name">MCP — Implementing Azure Infrastructure Solutions</div>
+            <div class="cert-issuer">Microsoft · 2017</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🎓</div>
+          <div>
+            <div class="cert-name">B.Tech in Computer Engineering</div>
+            <div class="cert-issuer">Ladoke Akintola University of Technology · 2015</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <p class="section-label">// let's connect</p>
+      <h2>Get In Touch</h2>
+      <p class="contact-sub">
+        I'm currently open to new opportunities. Whether you have a role, a project, or just want to talk shop — my inbox is open.
+      </p>
+      <a href="mailto:afeezirekeola@gmail.com" class="btn btn-primary" style="font-size:15px; padding: 0.8rem 2rem;">
+        Say Hello
+      </a>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/afeez-irekeola" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://www.github.com/hayfeez" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub (hayfeez)
+        </a>
+        <a href="https://www.github.com/hayfeez-dev" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub (hayfeez-dev)
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Designed & built by Afeez Irekeola · 2026</p>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Active nav link highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            navLinks.forEach(a => a.style.color = '');
+            const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+            if (active) active.style.color = 'var(--accent)';
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+</body>
+</html>
